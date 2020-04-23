@@ -1,0 +1,337 @@
+import random
+import time
+def multiply(x, y):
+   
+    return x * y
+
+def divide(x, y):
+   
+    return x / y
+def add(x,y):
+    
+    return x+y
+def subtract(x,y):
+    return x-y
+miles_to_go = 2000
+oxen_owned=0
+food_owned=0
+ammo_owned=0
+clothes_owned=0
+parts_owned=0
+print("OREGON TRAIL")
+time.sleep(1)
+print("By Ocra004, Shadowfax13, Ripsticker321, LJCoder619, Undefined_Error, DatMathBoy")
+time.sleep(1)
+
+
+def prob_theft(money):
+    answer = ""
+    if money >= 1000:
+        rint = random.randint(1, 5)
+        if rint == 1:
+            answer = "$100 was stolen."
+    elif (money > 500) and (money < 1000):
+        rint = random.randint(1, 7)
+        if rint == 1:
+            answer = "$75 was stolen."
+    else:
+        rint = random.randint(1, 10)
+        if rint == 1:
+            answer = "$50 was stolen."
+    return answer
+
+
+def supplies(money, oxen, food, ammo, clothes, parts):
+    supplies_dict = {"money": money, "oxen": oxen, "food": food, "ammo": ammo, "clothes": clothes, "parts": parts}
+    return supplies_dict
+
+
+running = True
+while running:
+    print("Welcome to the Oregon Trail!")
+    start_loop = True
+    while start_loop:
+        start = input("Would you like to 1: Leave or 2: Play? ")
+        if start == "1":
+            sys.exit()
+        elif start == "2":
+            start_loop = False
+            running = False
+        else:
+            print("I do not recognise {}. Please try again.".format(start))
+        shop = True
+print("Loading...")
+time.sleep(2)
+name_health = 100
+name1_health = 100
+name2_health = 100
+name3_health = 100
+name4_health = 100
+name = input("What is the name of the leader: ")
+name_1 = input("Name of second person: ")
+name_2 = input("Name of third person: ")
+name_3 = input("Name of fourth person: ")
+name_4 = input("Name of fifth person: ")
+print("Great!")
+print("Who do you want to be?")
+print("1. Banker")
+print("2. Storekeeper")
+print("3. Worker at a factory")
+print("4. Carpenter")
+print("5. Silversmith")
+choice = input("Role(number): ")
+if choice == '1':
+    print("Good Choice!")
+    money=6000
+elif choice == '2':
+    print("Nice")
+    money = 5000
+elif choice == '3':
+    print("Ok!")
+    money = 4000
+elif choice == '4':
+    print("Sure!")
+    money = 3500
+elif choice == '5':
+    print("Crafty!")
+    money = 5000
+else:
+    sys.exit()
+
+print("Select the month do you want to leave you must get to your destination before winter comes.")
+print("1. February")
+print("2. March")
+print("3. April")
+print("4. May")
+print("5. June")
+print("6. July")
+print("7. August")
+print("8. September")
+month = input("What month?(put the number): ")
+if month == '1':
+    print("ok!")
+    month = 'February 2'
+elif month == '2':
+    print("ok!")
+    month = 'March 20'
+elif month == '3':
+    print("ok!")
+    month = 'April 29'
+elif month == '4':
+    print("ok!")
+    month = 'May 16'
+elif month == '5':
+    print("ok!")
+    month = 'June 20'
+elif month == '6':
+    print("ok!")
+    month = 'July 15'
+elif month == '7':
+    print("ok!")
+    month = 'August 19'
+elif month == '8':
+    print("ok!")
+    month = 'September 23'
+else:
+    sys.exit()
+print("Let's first go to the shop to buy supplies!")
+shop_go = input("Type 1 to go!: ")
+if shop_go == '1':
+    shop = True
+    while shop:
+        oxen_choice = True
+        food_choice = True
+        ammo_choice = True
+        clothes_choice = True
+        parts_choice = True
+        print("Welcome to Bob's Hardware shop! Select what you want to buy.")
+        print("1.Yokes of oxen (150 dollars each)")
+        print("2.Food (1 dollar per pound)")
+        print("3.Ammunition (2 dollars per box)")
+        print("4.Clothing (5 dollars per set)")
+        print("5.Spare Parts (10 dollars each)")
+        print('Enter "." to leave.')
+        print('You have', money, "to spend")
+        print('You have', oxen_owned, "oxen")
+        print("You have", food_owned, "pounds of food")
+        print("You have", ammo_owned, "boxes of ammo")
+        print("You have", clothes_owned, "sets of clothes")
+        print("You have", parts_owned, "spare parts")
+        shop_choice = input("What is your choice?: ")
+
+        if shop_choice == ".":
+            shop = False
+        elif shop_choice == "1":
+            while oxen_choice:
+                oxen = int(input("How many yokes would you like to buy? "))
+                oxen_owned=add(oxen_owned,oxen)
+                if oxen < 0:
+                    print("Please purchase a positive amount.")
+                    oxen_owned=subtract(oxen_owned,oxen)
+                elif oxen>4:
+                    print("Sorry you can't buy that many. ")
+                    oxen_owned=subtract(oxen_owned,oxen)
+                elif (oxen * 150) > money:
+                    print("You do not have enough money.")
+                    oxen_owned=subtract(oxen_owned,oxen)
+                elif oxen_owned == '3':
+                    print("Sorry you can't buy that right now")
+                    oxen_owned=subtract(oxen_owned,oxen)
+                else:
+                    print("You purchased oxen.")
+                    money = money - (oxen * 150)
+                    oxen_choice = False
+
+        elif shop_choice == "2":
+            while food_choice:
+                food = int(input("How many pounds of food would you like to buy? "))
+                food_owned=add(food_owned,food)
+                if food < 0:
+                    print("Please purchase a positive integer.")
+                    food_owned=subtract(food_owned,food)
+                if food>2000:
+                    print("Sorry you can't buy that many. ")
+                    food_owned=subtract(food_owned,food)
+                elif food > money:
+                    print("You do not have enough money.")
+                    food_owned=subtract(food_owned,food)
+                elif food_owned=='2000':
+                    print("Sorry you can't buy that right now.")
+                    food_owned=subtract(food_owned,food)
+                else:
+                    print("You purchased", food, "pounds of food.")
+                    money = money - food
+                    food_choice = False
+
+        elif shop_choice == "3":
+            while ammo_choice:
+                ammo = int(input("How many boxes of ammunition would you like to buy? "))
+                ammo_owned=add(ammo_owned,ammo)
+                if ammo < 0:
+                    print("Please purchase a positive integer.")
+                    ammo_owned=subtract(ammo_owned,ammo)
+                elif ammo > 100:
+                    print("Sorry you can't buy that many. ")
+                    ammo_owned=subtract(ammo_owned,ammo)
+                elif (ammo * 2) > money:
+                    print("You do not have enough money.")
+                    ammo_owned=subtract(ammo_owned,ammo)
+                elif ammo_owned=='100':
+                    print("Sorry you can't buy that right now.")
+                    ammo_owned=subtract(ammo_owned,ammo)
+                else:
+                    print("You purchased", ammo, "boxes of ammo.")
+                    money = money - (ammo * 2)
+                    ammo_choice = False
+
+        elif shop_choice == "4":
+            while clothes_choice:
+                clothes = int(input("How many sets of cloths would you like to buy? "))
+                clothes_owned=add(clothes_owned,clothes)
+                if clothes < 0:
+                    print("Please purchase a positive integer.")
+                    clothes_owned=subtract(clothes_owned,clothes)
+                elif clothes > 100:
+                    print("Sorry you can't buy that many. ")
+                    clothes_owned=subtract(clothes_owned,clothes)
+                elif (clothes * 5) > money:
+                    print("You do not have enough money.")
+                    clothes_owned=subtract(clothes_owned,clothes)
+                elif clothes_owned=='100':
+                    print("Sorry you can't buy that right now.")
+                    clothes_owned=subtract(clothes_owned,clothes)
+                else:
+                    print("You purchased", clothes, "sets of clothes.")
+                    money = money - (clothes * 5)
+                    clothes_choice = False
+
+        elif shop_choice == "5":
+            while parts_choice:
+                if parts_owned<9:
+                    print("You purchased 9 parts spare parts.")
+                    money = subtract(money, 90)
+                    parts_choice = False
+                    wheels=3
+                    tongues=3
+                    axles=3
+                if parts>9:
+                    print("Sorry you can't buy that anymore.")
+else:
+    sys.exit()
+print("Let's go!")
+print("Today is,", month, 1854)
+go = input("Want to go?(y/n): ")
+if go == 'y':
+    print("Remember that 1. is Check supplies, 2. Is Trade, and 3. is Rest")
+    print("            /\                                                                  ")
+    print("           /  \                                /\                   /\          ")
+    print("  /\      /    \  /\                      /\  /  \                 /  \/\   /\  ")
+    print(" /  \/\  /      \/  \           /\       /  \/    \       ____________________\ ")
+    print("/    \ \/        \   \         /  \/\   /    \ (_ ___    /--------------------\ ")                          
+    print("         o o    .O    .   .          .    o    (*]_~_|\  |-/---\--------/---\-| ")                       
+    print("_______________________________________________.// .ll_____\---/________\---/___")
+    print("################1. Check Supplies#########"Today is,", month, 1854##############")
+    print("################2. Trade########################################################")
+    print("################3. Rest#########################################################")
+    print("################4. Don't Do Anything############################################")
+    print("################################################################################")
+    print("________________________________________________________________________________")
+ #make it so that they can enter a number but they dont disturb the movement
+    print("________________________________________________________________________________")
+    print("            /\                                                                  ")
+    print("           /  \                                /\                   /\          ")
+    print("  /\      /    \  /\                      /\  /  \                 /  \/\   /\  ")
+    print(" /  \/\  /      \/  \           /\       /  \/    \       ____________________\ ")
+    print("/    \ \/        \   \         /  \/\   /    \ (_ ___    /--------------------\\")                           
+    print("         o o    .O    .   .          .    o    (*]_~_|\  |-/---\--------/---\-| ")                       
+    print("_______________________________________________.ll .\\\____\---/________\---/___")
+    print("################1. Check Supplies#########"Today is,", month, "1854"############")
+    print("################2. Trade########################################################")
+    print("################3. Rest#########################################################")
+    print("################4. Don't Do Anything############################################")
+    print("################################################################################")
+    print("________________________________________________________________________________")
+    print("            /\                                                                  ")
+    print("           /  \                                /\                   /\          ")
+    print("  /\      /    \  /\                      /\  /  \                 /  \/\   /\  ")
+    print(" /  \/\  /      \/  \           /\       /  \/    \       ____________________\ ")
+    print("/    \ \/        \   \         /  \/\   /    \ (_ ___    /--------------------\ ")                          
+    print("         o o    .O    .   .          .    o    (*]_~_|\  |-/---\--------/---\-| ")                       
+    print("_______________________________________________.// .ll_____\---/________\---/___")
+    print("################1. Check Supplies#########"Today is,", month, 1854##############")
+    print("################2. Trade########################################################")
+    print("################3. Rest#########################################################")
+    print("################4. Don't Do Anything############################################")
+    print("################################################################################")
+    print("________________________________________________________________________________")
+month=add(month,1)
+    choices = input("What do you want to do? ")
+    if choices == '1':
+        print(oxen_owned,food_owned,ammo_owned,clothes_owned,parts_owned)
+    elif choices == "2":
+        print("ok boomer")
+        # do trade function here
+        print("If you want to trade type in the number. Otherwise don't write anything.")
+        import random
+        #RANDOM STUFF CODE IDK
+        choice=input()
+        if choice == "1":
+              print("Ok you got 500 boxes of ammo")
+              ammo= add(ammo,500)
+              oxen= subtract(oxen,1)
+    elif choices == "3":
+        if name_health <= 94:
+            name_health += 5
+        elif name1_health <= 94:
+            name1_health += 5
+        elif name2_health <= 94:
+            name2_health += 5
+        elif name3_health <= 94:
+            name3_health += 5
+        elif name4_health <= 94:
+            name4_health += 5
+    else:
+        
+        
+elif go == "n":
+    sys.exit()
